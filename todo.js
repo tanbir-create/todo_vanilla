@@ -157,7 +157,7 @@ function taskStatusList(value){
             
         }
         else if( storedKey == value){
-            undoneTaskCount++;
+            
             list_item.style.display = 'flex'
 
         }else{
