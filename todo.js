@@ -105,6 +105,7 @@ function createNewTask(key){
 
 function handleChanges(e){
 
+   //use event bubbling for both delete and check
 
     if(e.target.className == "delete-btn"){
         const li = e.target.parentElement;
@@ -134,7 +135,7 @@ function handleChanges(e){
 function showCategoryList () {
     
     let category = categorySelect.options[categorySelect.selectedIndex].value;
-    console.log(category)
+  
     if(category  == 'Undone'){
 
          taskStatusList('undone');
@@ -158,10 +159,10 @@ function taskStatusList(value){
         }
         else if( storedKey == value){
             
-            list_item.style.display = 'flex'
+            list_item.style.display = 'none'
 
         }else{
-            list_item.style.display = 'none'
+            list_item.style.display = 'flex'
         }
     }
 }
