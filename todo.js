@@ -143,21 +143,24 @@ function showCategoryList () {
 
 }
 
-function taskStatusList(value){
 
+function taskStatusList(value){
     for(let i = 0; i<localStorage.length; i++){
         let list_item  = task_list.children[i]
-        let storedKey  = localStorage.getItem(localStorage.key(i))
+        let task = list_item.children[1].innerText
+        let status  = localStorage.getItem(task)
+        
         if(value == 'all'){
             list_item.style.display = 'flex'
             
         }
-        else if( storedKey == value){
+        else if( status == value){
             
             list_item.style.display = 'flex'
 
         }else{
             list_item.style.display = 'none'
+
         }
     }
 }
@@ -166,10 +169,11 @@ function clearCompleted(){
 
     for(let i = 0; i<localStorage.length; i++){
         let list_item  = task_list.children[i]
-        let storedKey  = localStorage.getItem(localStorage.key(i))
+        let task = list_item.children[1].innerText
+        let status  = localStorage.getItem(task)
 
-        if(storedKey == 'done'){
-            localStorage.removeItem(localStorage.key(i));
+        if(status == 'done'){
+            localStorage.removeItem(task);
             list_item.remove();
         }
     }
