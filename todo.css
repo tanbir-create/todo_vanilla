@@ -47,7 +47,7 @@ html {
 #input-form{
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 95%;
     position: relative;
     min-height: 45px;
     
@@ -128,7 +128,7 @@ html {
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
-    width: 90%;
+    width: 95%;
     height: 100%;
     padding: 0;
     
