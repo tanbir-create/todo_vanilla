@@ -134,17 +134,12 @@ function handleChanges(e){
 
 function showCategoryList () {
     
-    let category = categorySelect.options[categorySelect.selectedIndex].value;
+   
   
-    if(category  == 'Undone'){
+    let category = categorySelect.options[categorySelect.selectedIndex].value;
+    
+    taskStatusList(category.toLowerCase());
 
-         taskStatusList('undone');
-
-    }else if(category == 'Done'){
-         taskStatusList('done');
-    }else if(category == 'All'){
-        taskStatusList('All')
-    }
 
 }
 
@@ -153,16 +148,16 @@ function taskStatusList(value){
     for(let i = 0; i<localStorage.length; i++){
         let list_item  = task_list.children[i]
         let storedKey  = localStorage.getItem(localStorage.key(i))
-        if(value == 'All'){
+        if(value == 'all'){
             list_item.style.display = 'flex'
             
         }
         else if( storedKey == value){
             
-            list_item.style.display = 'none'
+            list_item.style.display = 'flex'
 
         }else{
-            list_item.style.display = 'flex'
+            list_item.style.display = 'none'
         }
     }
 }
