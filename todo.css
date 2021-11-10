@@ -63,13 +63,17 @@ html {
     text-indent: 10px; 
     border-radius: .45rem 0 0 .45rem;
     transition: .3s;
+    color: #495057;
+    font: 400 1rem 'Josefin Sans', sans-serif;
   
 }
 #task-input:focus{
     outline: none;
     box-shadow: 0 0 5px #008ECC;
    
-      border: 1px solid #008ECC; 
+    border: 1px solid #008ECC; 
+    font: 400 1rem 'Josefin Sans', sans-serif;
+    color: #495057;
 }
 
 
@@ -151,7 +155,7 @@ html {
 }
 
 .completed-display{
-    background-image: linear-gradient(to right, #000000, #434343);
+    background-image: linear-gradient(to right, #404040, #707070);
      
     opacity: .78;
 
@@ -178,64 +182,90 @@ html {
     
    
 }
-.completed-btn[type="checkbox"]:before {
-    position: relative;
-    display: block;
-    width: 11px;
-    height: 11px;
-    border: 1px solid #808080;
+
+
+input[type="checkbox"] {
+    position: relative !important;
+    appearance: none;
+    margin: 8px;
+    box-sizing: content-box;
+    overflow: hidden;
     border-radius: 5px;
-    content: "";
-    background: #FFF;
-  }
-  
-  .completed-btn[type="checkbox"]:after {
-    position: relative;
-    display: block;
-    left: 2px;
-    top: -11px;
-    width: 7px;
-    height: 7px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #B3B3B3 #dcddde #dcddde #B3B3B3;
-    border-radius: 5px;
-    content: "";
-    background-image: linear-gradient(135deg, #B1B6BE 0%, #FFF 100%);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-.completed-btn[type="checkbox"]:checked:after {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAQAAABuW59YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB2SURBVHjaAGkAlv8A3QDyAP0A/QD+Dam3W+kCAAD8APYAAgTVZaZCGwwA5wr0AvcA+Dh+7UX/x24AqK3Wg/8nt6w4/5q71wAAVP9g/7rTXf9n/+9N+AAAtpJa/zf/S//DhP8H/wAA4gzWj2P4lsf0JP0A/wADAHB0Ngka6UmKAAAAAElFTkSuQmCC'), linear-gradient(135deg, #B1B6BE 0%, #FFF 100%);
 }
-
-.completed-btn[type="checkbox"]:checked:hover:after {
+input[type="checkbox"]:hover{
     cursor: pointer;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAQAAABuW59YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB2SURBVHjaAGkAlv8A3QDyAP0A/QD+Dam3W+kCAAD8APYAAgTVZaZCGwwA5wr0AvcA+Dh+7UX/x24AqK3Wg/8nt6w4/5q71wAAVP9g/7rTXf9n/+9N+AAAtpJa/zf/S//DhP8H/wAA4gzWj2P4lsf0JP0A/wADAHB0Ngka6UmKAAAAAElFTkSuQmCC'), linear-gradient(135deg, #8BB0C2 0%, #FFF 100%);
-  }
-
-  .completed-btn[type="checkbox"]:hover:after {
-      cursor: pointer;
-    background-image: linear-gradient(135deg, #8BB0C2 0%, #FFF 100%);
-    border-color: #85A9BB #92C2DA #92C2DA #85A9BB;
-  }
-  
-.completed-btn{
-    margin-left: .5rem;
-    height: 22px;
-    width: 22px;
-  }
-  
-  .completed-btn[type="checkbox"]:before {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .completed-btn[type="checkbox"]:after {
-    top: -20px;
+}
+input[type="checkbox"]:before {
+    content: '';
+    display: block;
+    box-sizing: content-box;
     width: 16px;
     height: 16px;
-  }
+    border: 2px solid #ccc;
+  
+}
+input[type="checkbox"]:checked:before {
+    border-color: #2193b0;
+    transition: 0.5s border-color ease;
+}
+input[type="checkbox"]:disabled:before {
+    border-color: #ccc;
+    background-color: #ccc;
+}
+input[type="checkbox"]:after {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: content-box;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 50%;
+    background-color: #2193b0;
+    width: 16px;
+    height: 16px;
+    border-radius: 100vh;
+    transform: translate(-50%,-50%) scale(0);
+}
+
+input[type="checkbox"]:before {
+    border-radius: 16px/4;
+}
+input[type="checkbox"]:after {
+    width: 9.6px;
+    height: 16px;
+    border-radius: 0;
+    transform: translate(-50%,-85%) scale(0) rotate(45deg);
+    background-color: transparent;
+    box-shadow: 4px 4px 0px 0px #2193b0;
+}
+input[type="checkbox"]:checked:after {
+    animation: toggleOnCheckbox 0.2s ease forwards;
+}
+input[type="checkbox"].filled:before {
+    border-radius: 16px/4;
+    transition: 0.2s border-color ease, 0.2s background-color ease;
+}
+input[type="checkbox"].filled:checked:not(:disabled):before {
+    background-color: #2193b0;
+}
+input[type="checkbox"].filled:not(:disabled):after {
+    box-shadow: 4px 4px 0px 0px white;
+}
+@keyframes toggleOnCheckbox {
+    0% {
+        opacity: 0;
+        transform: translate(-50%,-85%) scale(0) rotate(45deg);
+   }
+    70% {
+        opacity: 1;
+        transform: translate(-50%,-85%) scale(0.9) rotate(45deg);
+   }
+    100% {
+        transform: translate(-50%,-85%) scale(0.8) rotate(45deg);
+   }
+}
+
+
 
 .delete-btn{
     height: 100%;
