@@ -192,9 +192,12 @@ input[type="checkbox"] {
     box-sizing: content-box;
     overflow: hidden;
     border-radius: 5px;
+    transition: transform .3s ease-in-out;
 }
 input[type="checkbox"]:hover{
     cursor: pointer;
+        transform: scale(1.155);
+
 }
 input[type="checkbox"]:before {
     content: '';
