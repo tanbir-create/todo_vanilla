@@ -167,14 +167,12 @@ function taskStatusList(value){
 
 function clearCompleted(){
 
-    for(let i = 0; i<localStorage.length; i++){
-        let list_item  = task_list.children[i]
-        let task = list_item.children[1].innerText
-        let status  = localStorage.getItem(task)
-
-        if(status == 'done'){
-            localStorage.removeItem(task);
-            list_item.remove();
-        }
+    let list = document.querySelectorAll( "ul .completed-display")
+   
+    for(let i= 0; i<list.length; i++){
+        
+        let task = list[i].children[1].innerText
+        list[i].remove();
+        localStorage.removeItem(task);
     }
 }
